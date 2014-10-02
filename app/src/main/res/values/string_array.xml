@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="news_filter_action_items">
+        <item>All</item>
+        <item>Past 1 Day</item>
+        <item>Past 7 Days</item>
+        <item>Past 30 Days</item>
+    </string-array>
+</resources>

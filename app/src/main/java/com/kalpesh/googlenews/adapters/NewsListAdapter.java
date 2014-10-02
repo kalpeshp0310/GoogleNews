@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -31,6 +32,15 @@ public class NewsListAdapter extends BaseAdapter {
         this.layoutInflater = layoutInflater;
     }
 
+    public void updateNewsItems(ArrayList<NewsItem> filteredNewsItems){
+        newsItems = filteredNewsItems;
+        notifyDataSetChanged();
+    }
+
+    public ArrayList<NewsItem> getNewsItems(){
+        return newsItems;
+    }
+
     @Override
     public int getCount() {
         return newsItems.size();
@@ -53,7 +63,7 @@ public class NewsListAdapter extends BaseAdapter {
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.news_title);
             viewHolder.tvDate = (TextView) convertView.findViewById(R.id.news_date);
-            viewHolder.ivNewsImage = (NetworkImageView) convertView.findViewById(R.id.news_image_view);
+            viewHolder.ivNewsImage = (ImageView) convertView.findViewById(R.id.news_image_view);
             convertView.setTag(viewHolder);
         }
         ViewHolder viewHolder = (ViewHolder) convertView.getTag();
@@ -65,9 +75,10 @@ public class NewsListAdapter extends BaseAdapter {
         String imageUrl = newsItem.getImageUrl();
         if(!TextUtils.isEmpty(imageUrl)){
             ImageLoader imageLoader = AppController.getInstance().getImageLoader();
-            viewHolder.ivNewsImage.setImageUrl(imageUrl, imageLoader);
+            imageLoader.get(imageUrl, ImageLoader.getImageListener(viewHolder.ivNewsImage, R.drawable.placeholder_image, R.drawable.image_not_available));
+//            viewHolder.ivNewsImage.setImageUrl(imageUrl, imageLoader);
         }else{
-            //TODO put Error Image in to Image View.
+            viewHolder.ivNewsImage.setImageResource(R.drawable.image_not_available);
         }
 
         Date date = newsItem.getPublishDate();
@@ -81,6 +92,6 @@ public class NewsListAdapter extends BaseAdapter {
     public class ViewHolder{
         TextView tvTitle;
         TextView tvDate;
-        NetworkImageView ivNewsImage;
+        ImageView ivNewsImage;
     }
 }

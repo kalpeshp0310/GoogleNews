@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/news_item_card_bg"
     android:layout_height="wrap_content">
 
-    <com.android.volley.toolbox.NetworkImageView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/news_image_view"
@@ -21,17 +22,19 @@
         android:paddingTop="@dimen/news_text_block_vertical_margin"
         android:paddingBottom="@dimen/news_text_block_vertical_margin">
 
-        <TextView
+        <com.kalpesh.googlenews.views.CustomFontTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/news_title"
+            app:font="Quicksand-Regular.otf"
             android:textSize="@dimen/news_item_title_text_size" />
 
-        <TextView
+        <com.kalpesh.googlenews.views.CustomFontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@id/news_title"
+            app:font="Quicksand-LightItalic.otf"
             android:layout_marginTop="@dimen/news_margin_between_title_date"
             android:textSize="@dimen/news_item_date_text_size"
             android:id="@+id/news_date"/>
