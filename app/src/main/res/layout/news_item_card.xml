@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/news_item_card_bg"
+    android:layout_height="wrap_content">
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/news_image_view"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/news_text_block_horizontal_margin"
+        android:paddingLeft="@dimen/news_text_block_horizontal_margin"
+        android:paddingTop="@dimen/news_text_block_vertical_margin"
+        android:paddingBottom="@dimen/news_text_block_vertical_margin">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/news_title"
+            android:textSize="@dimen/news_item_title_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/news_title"
+            android:layout_marginTop="@dimen/news_margin_between_title_date"
+            android:textSize="@dimen/news_item_date_text_size"
+            android:id="@+id/news_date"/>
+    </RelativeLayout>
+
+</LinearLayout>
